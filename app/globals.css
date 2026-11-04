@@ -294,6 +294,214 @@ a {
   padding-inline: 18px;
 }
 
+.tasks {
+  display: grid;
+  gap: 16px;
+  margin-top: 1rem;
+}
+
+.tasks-form {
+  display: flex;
+  gap: 10px;
+}
+
+.tasks-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.tasks-form input:focus {
+  outline: 2px solid var(--primary-strong);
+  outline-offset: 2px;
+}
+
+.tasks-form #terceiroBotao {
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.tasks-list {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.tasks-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow-wrap: anywhere;
+}
+
+.tasks-list #quartoBotao {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.tasks-check-button {
+  margin-top: 0;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.tasks-message {
+  margin-top: 0;
+  font-weight: 700;
+}
+
+.tasks-message-warning {
+  color: #b42318;
+}
+
+.tasks-message-success {
+  color: #166534;
+}
+
+.cep-search {
+  display: grid;
+  gap: 10px;
+  max-width: 620px;
+}
+
+.cep-search label {
+  font-weight: 700;
+}
+
+.cep-search-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.cep-search input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.cep-search input:focus {
+  outline: 2px solid var(--primary-strong);
+  outline-offset: 2px;
+}
+
+.cep-search button {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4f46e5, #312e81);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cep-error {
+  color: #b42318;
+  font-weight: 700;
+}
+
+.contact-page {
+  max-width: 760px;
+  padding-top: 48px;
+}
+
+.contact-card {
+  display: grid;
+  gap: 12px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.contact-card h1 {
+  color: var(--text);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.contact-card > p:not(.section-kicker) {
+  color: var(--text-muted);
+}
+
+.contact-form {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.contact-form label {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: inherit;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid var(--primary-strong);
+  outline-offset: 2px;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button {
+  width: fit-content;
+  margin-top: 8px;
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4f46e5, #312e81);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.contact-error,
+.contact-success {
+  font-weight: 700;
+}
+
+.contact-error {
+  color: #b42318;
+}
+
+.contact-success {
+  color: #166534;
+}
+
 .project-link {
   display: inline-flex;
   align-items: center;
@@ -591,7 +799,9 @@ a {
   }
 
   .hero-actions,
-  .github-search > div {
+  .github-search > div,
+  .tasks-form,
+  .cep-search-controls {
     flex-direction: column;
   }
 

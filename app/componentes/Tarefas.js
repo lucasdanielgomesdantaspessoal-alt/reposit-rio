@@ -34,50 +34,48 @@ export default function Tarefas() {
   };
 
   return (
-    <div style={{ marginTop: '1rem' }}>
-      <form onSubmit={handleAdicionarTarefa} style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+    <div className="tasks">
+      <form onSubmit={handleAdicionarTarefa} className="tasks-form">
         <input
           type="text"
           value={novaTarefa}
           onChange={(e) => setNovaTarefa(e.target.value)}
           placeholder="Digite uma tarefa..."
-          style={{ padding: '8px', flex: 1 }}
         />
-        <button id = 'terceiroBotao'
-        type="submit" style={{ padding: '8px 12px' }}>
+        <button id="terceiroBotao" type="submit">
           Adicionar
         </button>
       </form>
 
-      <ul>
+      <ul className="tasks-list">
         {tarefas.map((tarefa, index) => (
           <li key={index}>
             {tarefa}{' '}
-            <button id = 'quartoBotao' 
-            type="button" onClick={() => handleRemoverTarefa(index)}>
+            <button
+              id="quartoBotao"
+              type="button"
+              onClick={() => handleRemoverTarefa(index)}
+            >
               Remover
             </button>
           </li>
         ))}
       </ul>
-
-      <button id = 'quintoBotao'
+      <button
+        id="quintoBotao"
+        className="tasks-check-button"
         onClick={handleVerificarLimite}
-        style={{
-          marginTop: '16px',
-          padding: '10px 16px',
-          cursor: 'pointer',
-          backgroundColor: '#3c1f8d',
-          color: '#ffffff',
-          border: 'none',
-          borderRadius: '4px',
-        }}
       >
         Verificar Limite
       </button>
 
       {mensagem && (
-        <p style={{ marginTop: '12px', fontWeight: 'bold', color: tarefas.length < 5 ? 'red' : 'green' }}>
+        <p
+          className={`tasks-message ${
+            tarefas.length < 5 ? "tasks-message-warning" : "tasks-message-success"
+          }`}
+          role="status"
+        >
           {mensagem}
         </p>
       )}

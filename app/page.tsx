@@ -2,6 +2,7 @@ import Cabecalho from "./componentes/Cabecalho";
 import Cartao from "./componentes/Cartao";
 import Secao from "./componentes/Secao";
 import Tarefas from "./componentes/Tarefas";
+import BuscaCep from "./componentes/BuscaCep";
 import { Projetos } from "./componentes/Dados";
 
 export default function Home() {
@@ -52,6 +53,10 @@ export default function Home() {
 
       <Secao id="tarefas" titulo="Tarefas" className="tasks-section">
         <Tarefas />
+      </Secao>
+
+      <Secao id="busca-cep" titulo="Buscar CEP">
+        <BuscaCep />
       </Secao>
     </main>
   );
