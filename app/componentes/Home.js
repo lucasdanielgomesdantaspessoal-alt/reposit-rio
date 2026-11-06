@@ -1,7 +1,5 @@
 import styles from "./Home.module.css";
 
-export default function Home(){
-    return(
-        <div className={styles.home}>Ola mundo</div>
-    );
+export default function Home() {
+  return <div className={styles.home}>Olá mundo</div>;
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import Cabecalho from "./componentes/Cabecalho";
 import Cartao from "./componentes/Cartao";
 import Secao from "./componentes/Secao";
@@ -51,7 +53,7 @@ export default function Home() {
         ))}
       </Secao>
 
-      <Secao id="tarefas" titulo="Tarefas" className="tasks-section">
+      <Secao id="tarefas.js" titulo="Tarefas" className="tasks-section">
         <Tarefas />
       </Secao>
 

@@ -1,26 +1,56 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import {
+  criarTarefa,
+  ouvirTarefas,
+  alternarTarefa,
+  removerTarefa,
+} from '@/lib/tarefas';
 
 export default function Tarefas() {
   const [tarefas, setTarefas] = useState([]);
   const [novaTarefa, setNovaTarefa] = useState('');
   const [mensagem, setMensagem] = useState('');
 
-  const handleAdicionarTarefa = (e) => {
-    e.preventDefault();
-    if (!novaTarefa.trim()) return;
+  useEffect(() => {
+    const unsubscribe = ouvirTarefas((lista) => {
+      setTarefas(lista);
+    });
 
-    setTarefas((tarefasAtuais) => [...tarefasAtuais, novaTarefa]);
-    setNovaTarefa('');
-    setMensagem('');
+    return () => unsubscribe?.();
+  }, []);
+
+  const handleAdicionarTarefa = async (e) => {
+    e.preventDefault();
+    const texto = novaTarefa.trim();
+
+    if (!texto) return;
+
+    try {
+      await criarTarefa(texto);
+      setNovaTarefa('');
+      setMensagem('');
+    } catch (error) {
+      setMensagem('Não foi possível salvar a tarefa. Verifique o banco de dados.');
+    }
   };
 
-  const handleRemoverTarefa = (indiceRemovido) => {
-    setTarefas((tarefasAtuais) =>
-      tarefasAtuais.filter((_, indice) => indice !== indiceRemovido)
-    );
-    setMensagem('');
+  const handleRemoverTarefa = async (id) => {
+    try {
+      await removerTarefa(id);
+      setMensagem('');
+    } catch (error) {
+      setMensagem('Não foi possível remover a tarefa.');
+    }
+  };
+
+  const handleAlternarTarefa = async (id, feita) => {
+    try {
+      await alternarTarefa(id, feita);
+    } catch (error) {
+      setMensagem('Não foi possível atualizar o status da tarefa.');
+    }
   };
 
   const handleVerificarLimite = () => {
@@ -48,31 +78,33 @@ export default function Tarefas() {
       </form>
 
       <ul className="tasks-list">
-        {tarefas.map((tarefa, index) => (
-          <li key={index}>
-            {tarefa}{' '}
-            <button
-              id="quartoBotao"
-              type="button"
-              onClick={() => handleRemoverTarefa(index)}
-            >
+        {tarefas.map((tarefa) => (
+          <li key={tarefa.id}>
+            <label>
+              <input
+                type="checkbox"
+                checked={Boolean(tarefa.feita)}
+                onChange={() => handleAlternarTarefa(tarefa.id, tarefa.feita)}
+              />
+              <span style={{ textDecoration: tarefa.feita ? 'line-through' : 'none' }}>
+                {tarefa.texto}
+              </span>
+            </label>
+            <button id="quartoBotao" type="button" onClick={() => handleRemoverTarefa(tarefa.id)}>
               Remover
             </button>
           </li>
         ))}
       </ul>
-      <button
-        id="quintoBotao"
-        className="tasks-check-button"
-        onClick={handleVerificarLimite}
-      >
+
+      <button id="quintoBotao" className="tasks-check-button" onClick={handleVerificarLimite}>
         Verificar Limite
       </button>
 
       {mensagem && (
         <p
           className={`tasks-message ${
-            tarefas.length < 5 ? "tasks-message-warning" : "tasks-message-success"
+            tarefas.length < 5 ? 'tasks-message-warning' : 'tasks-message-success'
           }`}
           role="status"
         >

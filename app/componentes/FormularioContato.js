@@ -15,6 +15,7 @@ export default function FormularioContato() {
 
     const formulario = evento.currentTarget;
     const campos = new FormData(formulario);
+
     const contato = {
       nome: campos.get("nome"),
       email: campos.get("email"),
@@ -27,6 +28,7 @@ export default function FormularioContato() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(contato),
       });
+
       const resultado = await resposta.json();
 
       if (!resposta.ok) {

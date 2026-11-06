@@ -1,3 +1,6 @@
+import { addDoc, serverTimestamp } from "firebase/firestore";
+import { db, contatosCollection } from "../../../lib/firebase";
+
 export async function POST(request) {
   let dados;
 
@@ -45,8 +48,23 @@ export async function POST(request) {
     );
   }
 
-  return Response.json(
-    { message: "Mensagem recebida com sucesso." },
-    { status: 201 }
-  );
+  try {
+    await addDoc(contatosCollection, {
+      nome,
+      email,
+      mensagem,
+      criadaEm: serverTimestamp(),
+    });
+
+    return Response.json(
+      { message: "Mensagem recebida com sucesso." },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error("Erro ao salvar contato:", error);
+    return Response.json(
+      { error: "Não foi possível salvar a mensagem." },
+      { status: 500 }
+    );
+  }
 }
