@@ -6,6 +6,7 @@ import Secao from "./componentes/Secao";
 import Tarefas from "./componentes/Tarefas";
 import BuscaCep from "./componentes/BuscaCep";
 import { Projetos } from "./componentes/Dados";
+import BuscarGitHub from "./componentes/BuscarGitHub";
 
 export default function Home() {
   return (
@@ -53,12 +54,16 @@ export default function Home() {
         ))}
       </Secao>
 
-      <Secao id="tarefas.js" titulo="Tarefas" className="tasks-section">
+      <Secao id="tarefas" titulo="Tarefas" className="tasks-section">
         <Tarefas />
       </Secao>
 
       <Secao id="busca-cep" titulo="Buscar CEP">
         <BuscaCep />
+      </Secao>
+
+      <Secao id="BuscarGitHub" titulo="Buscar perfil do GitHub">
+        <BuscarGitHub />
       </Secao>
     </main>
   );

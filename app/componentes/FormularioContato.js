@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { enviarFormularioContato } from "../../service/service_Formulario";
 
 export default function FormularioContato() {
   const [enviando, setEnviando] = useState(false);
@@ -23,18 +24,7 @@ export default function FormularioContato() {
     };
 
     try {
-      const resposta = await fetch("/api/contato", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(contato),
-      });
-
-      const resultado = await resposta.json();
-
-      if (!resposta.ok) {
-        throw new Error(resultado.error || "Não foi possível enviar a mensagem.");
-      }
-
+      const resultado = await enviarFormularioContato(contato);
       formulario.reset();
       setSucesso(resultado.message);
     } catch (error) {

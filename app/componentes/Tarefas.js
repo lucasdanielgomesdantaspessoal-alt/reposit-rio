@@ -1,12 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import {
-  criarTarefa,
-  ouvirTarefas,
-  alternarTarefa,
-  removerTarefa,
-} from '@/lib/tarefas';
+import {  criarTarefa,  ouvirTarefas,  alternarTarefa,  removerTarefa,} from '@/lib/tarefas';
 
 export default function Tarefas() {
   const [tarefas, setTarefas] = useState([]);

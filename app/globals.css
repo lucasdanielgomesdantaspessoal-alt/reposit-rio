@@ -621,10 +621,68 @@ a {
   margin-top: 28px;
 }
 
+.github-user-details h2 {
+  margin: 4px 0;
+}
+
+.github-login {
+  color: var(--text-muted);
+}
+
+.github-stats,
+.github-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.github-stats > div,
+.github-details > div {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.github-stats dt,
+.github-details dt {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.github-stats dd,
+.github-details dd {
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+
+.github-stats dd {
+  color: var(--primary);
+  font-size: 1.3rem;
+}
+
+.github-details a {
+  color: var(--primary);
+}
+
+.github-repository-heading {
+  margin: 30px 0 16px;
+}
+
+.github-repository-heading p {
+  color: var(--text-muted);
+}
+
 .github-search {
   display: grid;
   gap: 10px;
   max-width: 520px;
+}
+
+.github-search label {
+  color: var(--text-muted);
+  font-weight: 600;
 }
 
 .github-search > div {
@@ -702,8 +760,13 @@ a {
 }
 
 .github-repositories span {
+  display: block;
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+.github-license {
+  margin-top: 6px;
 }
 
 .tecnologias {
@@ -766,6 +829,20 @@ a {
   color: rgba(255, 255, 255, 0.8);
   text-align: center;
   padding: 20px 16px;
+}
+
+.github-route {
+  padding-top: 36px;
+}
+
+.github-page {
+  display: block;
+}
+
+.github-page h1 {
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  color: var(--text);
+  margin: 0;
 }
 
 @media (max-width: 720px) {
