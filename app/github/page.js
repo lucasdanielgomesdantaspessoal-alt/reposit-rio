@@ -11,6 +11,7 @@ export default function GithubPage() {
             Digite um nome de usuário para ver as informações públicas e os
             repositórios desse perfil.
           </p>
+          <h3>Exemplo de usuário: octocat</h3>
         </header>
         <BuscarGitHub />
       </section>
