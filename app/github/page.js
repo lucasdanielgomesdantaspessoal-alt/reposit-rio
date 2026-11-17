@@ -11,6 +11,7 @@ export default function GithubPage() {
             Digite um nome de usuário para ver as informações públicas e os
             repositórios desse perfil.
           </p>
+          <h2 className="sr-only">Buscar perfil do GitHub</h2>
         </header>
         <BuscarGitHub />
       </section>
